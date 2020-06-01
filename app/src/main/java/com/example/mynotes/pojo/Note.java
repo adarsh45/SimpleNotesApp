@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class Note implements Parcelable {
 
-    String id, title, description, date;
+    private String id, title, description, date;
 
     public Note(){}
 

@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.mynotes.pojo.Note;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "Notes.db";
@@ -18,9 +20,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_4 = "DATE";
     public static final int DB_VERSION = 1;
 
+    SQLiteDatabase db;
+
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DB_VERSION);
-        SQLiteDatabase db = this.getWritableDatabase();
+        db = this.getWritableDatabase();
     }
 
     @Override
@@ -37,7 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertData(String title, String description, String date){
-        SQLiteDatabase db = this.getWritableDatabase();
+        db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_2,title);
         values.put(COL_3,description);
@@ -46,14 +50,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return (result != -1);
     }
 
+    public boolean insertDeletedNote(Note deletedNote){
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_1, deletedNote.getId());
+        values.put(COL_2, deletedNote.getTitle());
+        values.put(COL_3, deletedNote.getDescription());
+        values.put(COL_4, deletedNote.getDate());
+        long result = db.insert(TABLE_NAME, null, values);
+        return (result != -1);
+    }
+
     public Cursor getAllData(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ TABLE_NAME, null);
-        return cursor;
+        db = this.getWritableDatabase();
+        return db.rawQuery("SELECT * FROM "+ TABLE_NAME, null);
     }
 
     public boolean updateData(String id,String title, String description, String date){
-        SQLiteDatabase db = this.getWritableDatabase();
+        db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_1,id);
         values.put(COL_2,title);
@@ -61,6 +75,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_4,date);
         db.update(TABLE_NAME,values,"ID = ?", new String[] {id});
         return true;
+    }
+
+    public Integer deleteRecord(String id){
+        db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME, "ID= ?", new String[] {id});
     }
 
 }
