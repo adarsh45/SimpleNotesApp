@@ -13,6 +13,7 @@ import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -113,14 +114,6 @@ public class MainActivity extends AppCompatActivity implements NoteAdapter.OnNot
         noDataLayout = findViewById(R.id.no_data_view);
     }
 
-//    3 dot menu code
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main_menu,menu);
-        return true;
-    }
-
 //    on click for recycler view item
     @Override
     public void onNoteClick(int position) {
@@ -175,4 +168,22 @@ public class MainActivity extends AppCompatActivity implements NoteAdapter.OnNot
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
     }
 };
+
+    //    3 dot menu code
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if(item.getItemId() == R.id.menu_about){
+            startActivity(new Intent(MainActivity.this, AboutActivity.class));
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

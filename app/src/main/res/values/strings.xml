@@ -2,6 +2,7 @@
     <string name="app_name">My Notes</string>
 
     <string name="splash_title">My Notes App</string>
+    <string name="app_version">Version: 1.0</string>
     <string name="splash_author_name_1">made with</string>
     <string name="splash_author_name_2">by Adarsh Shete</string>
     <string name="menu_settings">Settings</string>
@@ -12,5 +13,8 @@
     <string name="note_title">Title of Note</string>
     <string name="get_started">Get started &amp;\n Add some Notes</string>
     <string name="contentDescForImage">Image for showing No Notes in Database</string>
+    <string name="email">shete.adarsh@gmail.com</string>
+    <string name="website">adarsh45.github.io</string>
+    <string name="text_reach_me">You can reach me at:</string>
 
 </resources>
