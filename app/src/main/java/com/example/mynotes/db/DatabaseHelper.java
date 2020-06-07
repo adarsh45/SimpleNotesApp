@@ -15,10 +15,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Notes.db";
     public static final String TABLE_NAME = "notes";
     public static final String COL_1 = "ID";
-    public static final String COL_2 = "TITLE";
-    public static final String COL_3 = "DESCRIPTION";
-    public static final String COL_4 = "DATE";
-    public static final int DB_VERSION = 1;
+    public static final String COL_2 = "NOTE_TEXT";
+    public static final String COL_3 = "DATE";
+    public static final int DB_VERSION = 2;
 
     SQLiteDatabase db;
 
@@ -30,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME
-                + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DESCRIPTION TEXT,DATE TEXT)";
+                + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,NOTE_TEXT TEXT,DATE TEXT)";
         db.execSQL(query);
     }
 
@@ -40,12 +39,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String title, String description, String date){
+    public boolean insertData(String noteText, String date){
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COL_2,title);
-        values.put(COL_3,description);
-        values.put(COL_4,date);
+        values.put(COL_2,noteText);
+        values.put(COL_3,date);
         long result = db.insert(TABLE_NAME,null, values);
         return (result != -1);
     }
@@ -54,9 +52,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_1, deletedNote.getId());
-        values.put(COL_2, deletedNote.getTitle());
-        values.put(COL_3, deletedNote.getDescription());
-        values.put(COL_4, deletedNote.getDate());
+        values.put(COL_2, deletedNote.getNoteText());
+        values.put(COL_3, deletedNote.getDate());
         long result = db.insert(TABLE_NAME, null, values);
         return (result != -1);
     }
@@ -66,13 +63,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM "+ TABLE_NAME, null);
     }
 
-    public boolean updateData(String id,String title, String description, String date){
+    public boolean updateData(String id,String noteText, String date){
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_1,id);
-        values.put(COL_2,title);
-        values.put(COL_3,description);
-        values.put(COL_4,date);
+        values.put(COL_2,noteText);
+        values.put(COL_3,date);
         db.update(TABLE_NAME,values,"ID = ?", new String[] {id});
         return true;
     }

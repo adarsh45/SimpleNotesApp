@@ -17,14 +17,15 @@ import com.example.mynotes.R;
 import com.example.mynotes.db.DatabaseHelper;
 import com.example.mynotes.pojo.Note;
 import com.example.mynotes.util.Utility;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Objects;
 
 public class NoteActivity extends AppCompatActivity {
 
     private DatabaseHelper myDB;
-    private EditText editTitleText, editDescriptionText;
-    private Button btnSaveNote;
+    private EditText editNoteText;
+    private FloatingActionButton btnSaveNote;
     int origin;
     Note mNote;
 
@@ -55,8 +56,7 @@ public class NoteActivity extends AppCompatActivity {
         mNote = Objects.requireNonNull(getIntent().getExtras()).getParcelable("existingNote");
         if (origin == Utility.EDIT_NOTE){
             if (mNote != null){
-                editTitleText.setText(mNote.getTitle());
-                editDescriptionText.setText(mNote.getDescription());
+                editNoteText.setText(mNote.getNoteText());
                 Objects.requireNonNull(getSupportActionBar()).setTitle(mNote.getDate());
             }
         }
@@ -64,20 +64,19 @@ public class NoteActivity extends AppCompatActivity {
 
 //    onClick method of Save button
     private void saveNote() {
-        String noteTitle = editTitleText.getText().toString().trim();
-        String noteDescription = editDescriptionText.getText().toString().trim();
+        String noteText = editNoteText.getText().toString().trim();
         String date = Utility.getCurrentDate();
 
-        if (TextUtils.isEmpty(noteTitle)){
-            editTitleText.setError("Title cannot be empty!");
+        if (TextUtils.isEmpty(noteText)){
+            editNoteText.setError("Note cannot be empty!");
             return;
         }
         boolean isInserted = false;
         
         if (origin == Utility.NEW_NOTE){
-            isInserted = myDB.insertData(noteTitle,noteDescription,date);
+            isInserted = myDB.insertData(noteText ,date);
         } else if (origin == Utility.EDIT_NOTE){
-            isInserted = myDB.updateData(mNote.getId(), noteTitle, noteDescription, date);
+            isInserted = myDB.updateData(mNote.getId(), noteText, date);
         }
 
         if (isInserted) {
@@ -89,8 +88,7 @@ public class NoteActivity extends AppCompatActivity {
 
 //    init views with findViewById() method
     private void initialize() {
-        editTitleText = findViewById(R.id.edit_note_title);
-        editDescriptionText = findViewById(R.id.edit_note_description);
+        editNoteText = findViewById(R.id.edit_note_title);
         btnSaveNote = findViewById(R.id.btn_save_note);
     }
 

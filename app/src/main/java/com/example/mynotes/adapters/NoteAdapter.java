@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynotes.R;
 import com.example.mynotes.pojo.Note;
+import com.example.mynotes.util.Utility;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,9 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, final int position) {
         final Note note = mNotes.get(position);
-        holder.noteTitleTextView.setText(note.getTitle());
+        String noteText = Utility.cutTheString(note.getNoteText(), 30);
+        holder.noteTitleTextView.setText(noteText);
+
     }
 
     @Override

@@ -5,14 +5,13 @@ import android.os.Parcelable;
 
 public class Note implements Parcelable {
 
-    private String id, title, description, date;
+    private String id, noteText, date;
 
-    public Note(){}
+   public Note(){}
 
-    public Note(String id, String title, String description, String date) {
+    public Note(String id, String noteText, String date) {
         this.id = id;
-        this.title = title;
-        this.description = description;
+        this.noteText = noteText;
         this.date = date;
     }
 
@@ -24,20 +23,12 @@ public class Note implements Parcelable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getNoteText() {
+        return noteText;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setNoteText(String noteText) {
+        this.noteText = noteText;
     }
 
     public String getDate() {
@@ -48,6 +39,7 @@ public class Note implements Parcelable {
         this.date = date;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -56,19 +48,17 @@ public class Note implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.id);
-        dest.writeString(this.title);
-        dest.writeString(this.description);
+        dest.writeString(this.noteText);
         dest.writeString(this.date);
     }
 
     protected Note(Parcel in) {
         this.id = in.readString();
-        this.title = in.readString();
-        this.description = in.readString();
+        this.noteText = in.readString();
         this.date = in.readString();
     }
 
-    public static final Parcelable.Creator<Note> CREATOR = new Parcelable.Creator<Note>() {
+    public static final Creator<Note> CREATOR = new Creator<Note>() {
         @Override
         public Note createFromParcel(Parcel source) {
             return new Note(source);

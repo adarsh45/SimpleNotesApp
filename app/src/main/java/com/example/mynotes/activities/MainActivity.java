@@ -83,9 +83,8 @@ public class MainActivity extends AppCompatActivity implements NoteAdapter.OnNot
             while (c.moveToNext()){
                 Note note = new Note();
                 note.setId(c.getString(0));
-                note.setTitle(c.getString(1));
-                note.setDescription(c.getString(2));
-                note.setDate(c.getString(3));
+                note.setNoteText(c.getString(1));
+                note.setDate(c.getString(2));
                 myNotes.add(note);
             }
 
