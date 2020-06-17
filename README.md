@@ -7,15 +7,15 @@
 
 ___
 ## USP
-######Most phones nowadays come with built-in Notes App. But it is loaded with tons of features that you barely use.
-######That's why I have designed this simple yet efficient tool specially for you.
+#####Most phones nowadays come with built-in Notes App. But it is loaded with tons of features that you barely use.
+#####That's why I have designed this simple yet efficient tool specially for you.
 ___
 
 <div style="display:inline; align:center;">
-<img src="./images/ss_1.png" alt="Screenshot 1" style="">
-<img src="./images/ss_2.png" alt="Screenshot 2" style="">
-<img src="./images/ss_3.png" alt="Screenshot 3" style="">
-<!--<img src="./screenshots/ss_4.png" style="">-->
+<img src="./images/ss_1.png" alt="Screenshot 1" height="420px">
+<img src="./images/ss_2.png" alt="Screenshot 2" height="420px">
+<img src="./images/ss_3.png" alt="Screenshot 3" height="420px">
+<img src="./images/ss_4.png" alt="Screenshot 4" height="420px">
 </div>
 
 ###Contact me:
