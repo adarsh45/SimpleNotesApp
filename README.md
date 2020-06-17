@@ -7,8 +7,8 @@
 
 ___
 ## USP
-<h6>Most phones nowadays come with built-in Notes App. But it is loaded with tons of features that you barely use.</h6>
-<h6>That's why I have designed this simple yet efficient tool specially for you.</h6>
+##### Most phones nowadays come with built-in Notes App. But it is loaded with tons of features that you barely use.</h6>
+##### That's why I have designed this simple yet efficient tool specially for you.
 ___
 
 <div style="display:inline; align:center;">
@@ -18,7 +18,7 @@ ___
 <img src="./images/ss_4.png" alt="Screenshot 4" height="420px">
 </div>
 
-##Contact me:
+## Contact me:
 Portfolio Website: [adarsh45.github.io](https://adarsh45.github.io)
 Email: [shete.adarsh@gmail.com](shete.adarsh@gmail.com)
 LinkedIn: [linkedin.com/adarsh45](https://www.linkedin.com/in/adarsh45/)
