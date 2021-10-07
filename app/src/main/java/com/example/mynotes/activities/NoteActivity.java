@@ -17,6 +17,7 @@ import com.example.mynotes.R;
 import com.example.mynotes.db.DatabaseHelper;
 import com.example.mynotes.pojo.Note;
 import com.example.mynotes.util.Utility;
+import com.fiberlink.maas360.android.richtexteditor.RichEditText;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Objects;
@@ -88,7 +89,7 @@ public class NoteActivity extends AppCompatActivity {
 
 //    init views with findViewById() method
     private void initialize() {
-        editNoteText = findViewById(R.id.edit_note_title);
+        editNoteText = findViewById(R.id.rich_edit_text);
         btnSaveNote = findViewById(R.id.btn_save_note);
     }
 
