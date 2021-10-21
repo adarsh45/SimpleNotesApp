@@ -89,7 +89,7 @@ public class NoteActivity extends AppCompatActivity {
 
 //    init views with findViewById() method
     private void initialize() {
-        editNoteText = findViewById(R.id.rich_edit_text);
+        editNoteText = findViewById(R.id.et_note);
         btnSaveNote = findViewById(R.id.btn_save_note);
     }
 
