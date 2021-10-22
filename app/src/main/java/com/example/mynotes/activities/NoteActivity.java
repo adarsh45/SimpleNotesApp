@@ -17,7 +17,6 @@ import com.example.mynotes.R;
 import com.example.mynotes.db.DatabaseHelper;
 import com.example.mynotes.pojo.Note;
 import com.example.mynotes.util.Utility;
-import com.fiberlink.maas360.android.richtexteditor.RichEditText;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Objects;
